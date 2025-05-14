@@ -42,6 +42,7 @@
 }
 
 .post-category {
+  font-family: 'ExaltedExDemo', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -51,6 +52,7 @@
 }
 
 .post-title {
+  font-family: 'CouragesDemo', sans-serif;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -59,6 +61,7 @@
 }
 
 .post-excerpt {
+  font-family: 'ExaltedExDemo', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-light);
@@ -66,6 +69,7 @@
 }
 
 .post-date {
+  font-family: 'ExaltedExDemo', sans-serif;
   font-size: 14px;
   color: var(--text-light);
 }

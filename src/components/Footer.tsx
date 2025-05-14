@@ -1,12 +1,7 @@
 import { motion } from 'framer-motion';
 import './Footer.css';
 
-interface FooterProps {
-  onEnterHover: () => void;
-  onLeaveHover: () => void;
-}
-
-const Footer = ({ onEnterHover, onLeaveHover }: FooterProps) => {
+const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -16,29 +11,26 @@ const Footer = ({ onEnterHover, onLeaveHover }: FooterProps) => {
         <div className="footer-right">
           <motion.a 
             href="#" 
-            onMouseEnter={onEnterHover}
-            onMouseLeave={onLeaveHover}
             whileHover={{ opacity: 1 }}
           >
             Instagram
           </motion.a>
           <motion.a 
             href="#" 
-            onMouseEnter={onEnterHover}
-            onMouseLeave={onLeaveHover}
             whileHover={{ opacity: 1 }}
           >
             Twitter
           </motion.a>
           <motion.a 
             href="#" 
-            onMouseEnter={onEnterHover}
-            onMouseLeave={onLeaveHover}
             whileHover={{ opacity: 1 }}
           >
             LinkedIn
           </motion.a>
         </div>
+      </div>
+      <div className="footer-disclaimer">
+        <p>LEGAL DISCLAIMER: This website is a personal portfolio project developed for demonstration purposes. All photographic content on this website is sourced exclusively from Pexels (https://www.pexels.com/), a platform providing high-quality, royalty-free stock photos. Full credit for these images goes to their respective creators and copyright owners on Pexels. No images used herein are original works. This website serves solely to showcase web development skills and is not a commercial photography service. All intellectual property rights for the displayed images remain with their original creators. This project was developed by Kuldeep Swarnkar to demonstrate proficiency in web technologies including React, TypeScript, and Tailwind CSS.</p>
       </div>
     </footer>
   );

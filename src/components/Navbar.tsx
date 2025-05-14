@@ -3,21 +3,14 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
-interface NavbarProps {
-  activePage: string;
-  setActivePage: (page: string) => void;
-  onEnterHover: () => void;
-  onLeaveHover: () => void;
-}
-
-const Navbar = ({ activePage, setActivePage, onEnterHover, onLeaveHover }: NavbarProps) => {
+const Navbar = ({ activePage, setActivePage }: { activePage: string; setActivePage: (page: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: '01 About' },
-    { id: 'blog', label: '02 Blog' },
-    { id: 'contact', label: '03 Contact' },
+    { id: 'about', label: 'About' },
+    { id: 'blog', label: 'Blog' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   const toggleMenu = () => {
@@ -37,8 +30,6 @@ const Navbar = ({ activePage, setActivePage, onEnterHover, onLeaveHover }: Navba
           <button 
             className="menu-btn"
             onClick={toggleMenu}
-            onMouseEnter={onEnterHover}
-            onMouseLeave={onLeaveHover}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -70,8 +61,7 @@ const Navbar = ({ activePage, setActivePage, onEnterHover, onLeaveHover }: Navba
                   <button
                     className={`menu-item ${activePage === item.id ? 'active' : ''}`}
                     onClick={() => handleMenuClick(item.id)}
-                    onMouseEnter={onEnterHover}
-                    onMouseLeave={onLeaveHover}
+                    
                   >
                     {item.label}
                   </button>

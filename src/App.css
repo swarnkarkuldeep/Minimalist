@@ -12,11 +12,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none !important;
+
 }
 
 body {
-  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CouragesDemo', 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--black);
   color: var(--off-white);
   overflow-x: hidden;
@@ -31,13 +31,15 @@ body {
 .main-content {
   flex: 1;
   padding: 24px;
-  margin-top: 80px; /* Height of navbar */
+  margin-left: 200px; /* Width of navbar */
+  margin-top: 100px;
 }
 
 /* Hide scrollbar but keep functionality */
 body {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  
 }
 
 body::-webkit-scrollbar {
@@ -48,5 +50,11 @@ body::-webkit-scrollbar {
 @media (max-width: 768px) {
   .main-content {
     padding: 16px;
+    margin-left: 0;
+    margin-top: 80px;
+  }
+
+  .footer {
+    margin-left: 0;
   }
 }

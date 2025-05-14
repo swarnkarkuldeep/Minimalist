@@ -6,13 +6,12 @@ import Home from './components/Home';
 import About from './components/About';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
-import CustomCursor from './components/CustomCursor';
 import Footer from './components/Footer';
+import { MenuButton } from './components/MenuButton';
 import './App.css';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
-  const [cursorVariant, setCursorVariant] = useState('default');
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -31,9 +30,6 @@ function App() {
     requestAnimationFrame(raf);
   }, []);
 
-  const enterHover = () => setCursorVariant('hover');
-  const leaveHover = () => setCursorVariant('default');
-
   const renderContent = () => {
     switch (activePage) {
       case 'about':
@@ -49,19 +45,16 @@ function App() {
 
   return (
     <div className="app">
-      <CustomCursor variant={cursorVariant} />
       <Navbar 
         activePage={activePage} 
         setActivePage={setActivePage}
-        onEnterHover={enterHover}
-        onLeaveHover={leaveHover}
       />
       <main className="main-content">
         <AnimatePresence mode="wait">
           {renderContent()}
         </AnimatePresence>
       </main>
-      <Footer onEnterHover={enterHover} onLeaveHover={leaveHover} />
+      <Footer />
     </div>
   );
 }
