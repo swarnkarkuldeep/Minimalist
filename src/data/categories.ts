@@ -49,6 +49,7 @@ export const categories: Category[] = [
     coverImage: 'https://images.pexels.com/photos/1918290/pexels-photo-1918290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageUrl: 'https://images.pexels.com/photos/1918290/pexels-photo-1918290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
+
   {
     id: 'object',
     name: 'Object',
@@ -80,15 +81,15 @@ export const categories: Category[] = [
   {
     id: 'abstract',
     name: 'Abstract',
-    count: 8,
-    coverImage: '/cover/abstract.jpg',
-    imageUrl: '/cover/abstract.jpg'
+    count: 13,
+    coverImage: '/gallery/abstract/01a9b662-a4a3-4325-b0a1-291159070ada.jpeg',
+    imageUrl: '/gallery/abstract/01a9b662-a4a3-4325-b0a1-291159070ada.jpeg'
   },
   {
     id: 'minimal',
     name: 'Minimal',
-    count: 6,
-    coverImage: '/cover/minimal.jpg',
-    imageUrl: '/cover/minimal.jpg'
+    count: 18,
+    coverImage: '/gallery/minimal/02579708-468c-4545-8788-c69eed70bbcf.jpeg',
+    imageUrl: '/gallery/minimal/02579708-468c-4545-8788-c69eed70bbcf.jpeg'
   }
 ];
