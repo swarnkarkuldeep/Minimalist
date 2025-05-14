@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
 import Navbar from './components/Navbar';
@@ -7,11 +8,13 @@ import About from './components/About';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { MenuButton } from './components/MenuButton';
 import './App.css';
+import CategoryPage from './components/CategoryPage';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -28,6 +31,23 @@ function App() {
     }
 
     requestAnimationFrame(raf);
+
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight * 100;
+      setScrollProgress(scrollPercent);
+
+      if (progressRef.current) {
+        progressRef.current.style.width = `${scrollPercent}%`;
+      }
+    };
+
+    window.addEventListener('scroll', updateScrollProgress);
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
+    };
   }, []);
 
   const renderContent = () => {
@@ -45,6 +65,9 @@ function App() {
 
   return (
     <div className="app">
+      <div className="progress-bar-container">
+        <div ref={progressRef} className="progress-bar"></div>
+      </div>
       <Navbar 
         activePage={activePage} 
         setActivePage={setActivePage}
@@ -59,4 +82,15 @@ function App() {
   );
 }
 
-export default App;
+function AppWrapper() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default AppWrapper;

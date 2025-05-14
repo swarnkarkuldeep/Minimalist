@@ -3,6 +3,7 @@ export interface Category {
   name: string;
   count: number;
   coverImage: string;
+  imageUrl: string;
 }
 
 export const categories: Category[] = [
@@ -10,72 +11,84 @@ export const categories: Category[] = [
     id: 'portrait',
     name: 'Portrait',
     count: 12,
-    coverImage: 'https://images.pexels.com/photos/2531553/pexels-photo-2531553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/portrait.jpg',
+    imageUrl: '/cover/portrait.jpg'
   },
   {
     id: 'cinematic',
     name: 'Cinematic',
     count: 8,
-    coverImage: 'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/cinematic.jpg',
+    imageUrl: '/cover/cinematic.jpg'
   },
   {
     id: 'landscape',
     name: 'Landscape',
     count: 15,
-    coverImage: 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/landscape.jpg',
+    imageUrl: '/cover/landscape.jpg'
   },
   {
     id: 'architecture',
     name: 'Architecture',
     count: 10,
-    coverImage: 'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/architecture.jpg',
+    imageUrl: '/cover/architecture.jpg'
   },
   {
     id: 'mockup',
     name: 'Mockup',
     count: 6,
-    coverImage: 'https://images.pexels.com/photos/5709661/pexels-photo-5709661.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/mockup.jpg',
+    imageUrl: '/cover/mockup.jpg'
   },
   {
     id: 'art',
     name: 'Art',
     count: 9,
-    coverImage: 'https://images.pexels.com/photos/1918290/pexels-photo-1918290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: 'https://images.pexels.com/photos/1918290/pexels-photo-1918290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    imageUrl: 'https://images.pexels.com/photos/1918290/pexels-photo-1918290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 'object',
     name: 'Object',
     count: 7,
-    coverImage: 'https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/object.jpg',
+    imageUrl: '/cover/object.jpg'
   },
   {
     id: 'sneakers',
     name: 'Sneakers',
     count: 5,
-    coverImage: 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: 'https://images.pexels.com/photos/1661470/pexels-photo-1661470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    imageUrl: 'https://images.pexels.com/photos/1661470/pexels-photo-1661470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 'model',
     name: 'Model',
     count: 11,
-    coverImage: 'https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/model.jpg',
+    imageUrl: '/cover/model.jpg'
   },
   {
     id: 'street',
     name: 'Street',
     count: 13,
-    coverImage: 'https://images.pexels.com/photos/1755243/pexels-photo-1755243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/street.jpg',
+    imageUrl: '/cover/street.jpg'
   },
   {
     id: 'abstract',
     name: 'Abstract',
     count: 8,
-    coverImage: 'https://images.pexels.com/photos/2110951/pexels-photo-2110951.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/abstract.jpg',
+    imageUrl: '/cover/abstract.jpg'
   },
   {
     id: 'minimal',
     name: 'Minimal',
     count: 6,
-    coverImage: 'https://images.pexels.com/photos/2983141/pexels-photo-2983141.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    coverImage: '/cover/minimal.jpg',
+    imageUrl: '/cover/minimal.jpg'
   }
 ];

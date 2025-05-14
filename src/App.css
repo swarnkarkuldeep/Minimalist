@@ -58,3 +58,10 @@ body::-webkit-scrollbar {
     margin-left: 0;
   }
 }
+img {
+  filter: grayscale(100%) !important;
+}
+::selection {
+  background: #fff;
+  color: #000;
+}
