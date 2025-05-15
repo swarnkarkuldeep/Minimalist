@@ -505,12 +505,6 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: "/gallery/object/eb39c033-d30b-481d-9371-b1a9c44b1aa9.jpeg"
   },
   {
-    id: 90,
-    title: "Magical Essence",
-    category: "Object",
-    imageUrl: "/gallery/object/✨ Magic doesn't need a wand, just the right….jpeg"
-  },
-  {
     id: 91,
     title: "Urban Stride",
     category: "Sneakers",
@@ -761,12 +755,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Serene Composition",
     category: "Model",
     imageUrl: "/gallery/model/558f07b8-6ff7-405c-bbc2-680be5a91b65.jpeg"
-  },
-  {
-    id: 108,
-    title: "Minimalist Portrait",
-    category: "Model",
-    imageUrl: "/gallery/model/560b9392-2c9a-44b6-be9c-19848e104ec2.jpeg"
   },
   {
     id: 109,

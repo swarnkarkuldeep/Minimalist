@@ -17,6 +17,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const progressRef = useRef<HTMLDivElement>(null);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -27,17 +28,18 @@ const AnimatedRoutes = () => {
       smoothWheel: true,
     });
 
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
 
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = scrollTop / docHeight * 100;
+      const scrollPercent = (scrollTop / docHeight) * 100;
       setScrollProgress(scrollPercent);
       if (progressRef.current) {
         progressRef.current.style.width = `${scrollPercent}%`;
@@ -48,71 +50,76 @@ const AnimatedRoutes = () => {
 
     return () => {
       window.removeEventListener('scroll', updateScrollProgress);
+      lenisRef.current?.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true }); // instant scroll to top
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   return (
     <div className="app">
       <Navbar activePage={location.pathname.substring(1) || 'home'} setActivePage={() => {}} />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Home />
-            </motion.div>
-          } />
-          <Route path="/about" element={
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <About />
-            </motion.div>
-          } />
-          <Route path="/contact" element={
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Contact />
-            </motion.div>
-          } />
-          <Route path="/blog" element={
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Blog />
-            </motion.div>
-          } />
-          <Route path="/blog/:id" element={
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <BlogPost />
-            </motion.div>
-          } />
-          <Route path="/category/:category" element={
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <CategoryPage />
-            </motion.div>
-          } />
+          <Route
+            path="/"
+            element={
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <Home />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <About />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <Contact />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <Blog />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <BlogPost />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/category/:category"
+            element={
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <CategoryPage />
+              </motion.div>
+            }
+          />
         </Routes>
       </AnimatePresence>
-      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
+      <div className="scroll-progress" ref={progressRef} style={{ width: `${scrollProgress}%` }} />
       <Footer />
     </div>
   );
