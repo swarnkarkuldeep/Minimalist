@@ -113,10 +113,21 @@
     border: none;
   }
 
-  .menu-items {
-    display: none;
+  .menu-overlay {
+    display: flex !important;
+    top: 80px; /* Added to position below navbar */
   }
 
+  .menu-items {
+    display: flex !important;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .menu-item {
+    font-size: 32px;
+    margin: 16px 0;
+  }
   .menu-item {
     font-size: 42px;
     margin: 16px 0;

@@ -36,10 +36,19 @@ body {
 }
 
 /* Hide scrollbar but keep functionality */
+html {
+  overflow: auto;
+}
+
 body {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  
+  overflow: auto;
+  height: auto;
+}
+
+.app {
+  overflow: visible;
+  height: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 body::-webkit-scrollbar {
