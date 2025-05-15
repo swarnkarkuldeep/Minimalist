@@ -4,7 +4,7 @@
   padding-left: calc(195px + 40px); /* 195px for navbar, 40px for content padding */
   box-sizing: border-box;
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 80px 0 auto;
 }
 
 @media (max-width: 1200px) {

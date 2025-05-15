@@ -5,6 +5,7 @@
     box-sizing: border-box;
     max-width: 1400px;
     margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
   }
   
   @media (max-width: 1200px) {
@@ -40,6 +41,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 10px auto 16px;
+    animation: slideDown 0.8s ease-out;
   }
   
   .back-button {
@@ -53,17 +55,23 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
     background-color: transparent;
   }
   
   .back-button:hover {
     background-color: rgba(255, 255, 255, 0.06);
+    transform: translateX(-5px);
   }
   
   .back-arrow {
     font-size: 18px;
     margin-right: 4px;
+    transition: transform 0.3s ease;
+  }
+  
+  .back-button:hover .back-arrow {
+    transform: translateX(-3px);
   }
   
   .category-title {
@@ -73,6 +81,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     font-family: 'ExaltedExDemo', cursive;
+    animation: slideUp 0.8s ease-out;
   }
   
   .masonry-grid {
@@ -80,6 +89,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-bottom: 32px;
+    animation: fadeIn 1s ease-out;
   }
   
   .masonry-item {
@@ -87,6 +97,13 @@
     cursor: pointer;
     overflow: hidden;
     border-radius: 0;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   }
   
   .masonry-image {
@@ -117,6 +134,7 @@
     text-align: center;
     font-size: 32px;
     color: var(--off-white);
+    animation: fadeIn 1s ease-out;
   }
   
   .categories-grid {
@@ -127,6 +145,7 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
     margin-bottom: 32px;
+    animation: fadeIn 1.2s ease-out;
   }
   
   .category-item {
@@ -137,6 +156,12 @@
     text-decoration: none;
     color: inherit;
     background: #181818;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   }
   
   .category-image img {
@@ -227,3 +252,22 @@
     to { transform: scale(1); opacity: 1; }
   }
   
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }

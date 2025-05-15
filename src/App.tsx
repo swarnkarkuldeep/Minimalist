@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -12,8 +12,10 @@ import './App.css';
 import CategoryPage from './components/CategoryPage';
 import BlogPost from './components/BlogPost';
 
-function App() {
-  const [activePage, setActivePage] = useState('home');
+// Animated route wrapper
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ function App() {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = scrollTop / docHeight * 100;
-
+      setScrollProgress(scrollPercent);
       if (progressRef.current) {
         progressRef.current.style.width = `${scrollPercent}%`;
       }
@@ -49,55 +51,79 @@ function App() {
     };
   }, []);
 
-  const renderContent = () => {
-    switch (activePage) {
-      case 'about':
-        return <About />;
-      case 'blog':
-        return <Blog />;
-      case 'contact':
-        return <Contact />;
-      default:
-        return <Home />;
-    }
-  };
-
   return (
     <div className="app">
-      <div className="progress-bar-container">
-        <div ref={progressRef} className="progress-bar"></div>
-      </div>
-      <Navbar 
-        activePage={activePage} 
-        setActivePage={setActivePage}
-      />
-      <main className="main-content">
-        <AnimatePresence mode="wait">
-          {renderContent()}
-        </AnimatePresence>
-      </main>
+      <Navbar activePage={location.pathname.substring(1) || 'home'} setActivePage={() => {}} />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Home />
+            </motion.div>
+          } />
+          <Route path="/about" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <About />
+            </motion.div>
+          } />
+          <Route path="/contact" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Contact />
+            </motion.div>
+          } />
+          <Route path="/blog" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Blog />
+            </motion.div>
+          } />
+          <Route path="/blog/:id" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <BlogPost />
+            </motion.div>
+          } />
+          <Route path="/category/:category" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <CategoryPage />
+            </motion.div>
+          } />
+        </Routes>
+      </AnimatePresence>
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
       <Footer />
     </div>
   );
-}
+};
 
-function AppWrapper() {
-  const [activePage, setActivePage] = useState('home');
-
+function App() {
   return (
     <Router>
-      <Navbar activePage={activePage} setActivePage={setActivePage} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<BlogPost />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/category/:category" element={<CategoryPage />} />
-      </Routes>
-      <Footer />
+      <AnimatedRoutes />
     </Router>
   );
 }
 
-export default AppWrapper;
+export default App;

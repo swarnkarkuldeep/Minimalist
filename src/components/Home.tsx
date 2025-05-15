@@ -15,21 +15,39 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="home-container">
-      <section className="hero-section">
-        <h1 className="hero-title">Minimalist</h1>
-        <p className="hero-subtitle">Minimal. Radical.</p>
+    <motion.div 
+      className="home-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div 
+        className="hero-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h1 
+          className="hero-title"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
+          Minimalist
+        </motion.h1>
+        <motion.p 
+          className="hero-subtitle"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          Minimal. Radical.
+        </motion.p>
         <motion.div 
           className="scroll-down-indicator"
           initial={{ opacity: 0 }}
-          animate={{ 
-            opacity: [0, 1, 0], 
-            transition: { 
-              duration: 1.5, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            } 
-          }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
           onClick={() => {
             const portfolioSection = document.querySelector('.portfolio-section');
             portfolioSection?.scrollIntoView({ behavior: 'smooth' });
@@ -50,11 +68,21 @@ const Home: React.FC = () => {
           </svg>
           <span>Scroll Down</span>
         </motion.div>
-      </section>
-      <section className="portfolio-section">
+      </motion.div>
+      <motion.div 
+        className="portfolio-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+      >
         <MasonryGrid categories={categories.slice(0, visibleCount)} />
         {visibleCount < categories.length && (
-          <div style={{ textAlign: 'center', marginTop: 32 }}>
+          <motion.div 
+            style={{ textAlign: 'center', marginTop: 32 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
             <button
               onClick={handleLoadMore}
               style={{
@@ -71,10 +99,10 @@ const Home: React.FC = () => {
             >
               Load More
             </button>
-          </div>
+          </motion.div>
         )}
-      </section>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
