@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './Home.css';
 import MasonryGrid from './MasonryGrid';
-import { categories, Category } from '../data/categories';
+import { categories } from '../data/categories';
 
 const INITIAL_VISIBLE = 6; // Number of categories to show initially
 const LOAD_MORE_COUNT = 6; // Number of categories to load each time
@@ -58,15 +58,15 @@ const Home: React.FC = () => {
             <button
               onClick={handleLoadMore}
               style={{
-                padding: '12px 32px',
+                padding: 0,
                 fontSize: 18,
-                borderRadius: 8,
                 border: 'none',
-                background: 'var(--off-white)',
-                color: 'var(--black)',
+                background: 'transparent',
+                color: 'var(--off-white)',
                 cursor: 'pointer',
                 fontWeight: 600,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+                fontFamily: 'ExaltedExDemo, cursive',
+                textDecoration: 'underline'
               }}
             >
               Load More

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
@@ -10,10 +10,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 import CategoryPage from './components/CategoryPage';
+import BlogPost from './components/BlogPost';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
-  const [scrollProgress, setScrollProgress] = useState(0);
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,7 +36,6 @@ function App() {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = scrollTop / docHeight * 100;
-      setScrollProgress(scrollPercent);
 
       if (progressRef.current) {
         progressRef.current.style.width = `${scrollPercent}%`;
@@ -83,12 +82,20 @@ function App() {
 }
 
 function AppWrapper() {
+  const [activePage, setActivePage] = useState('home');
+
   return (
     <Router>
+      <Navbar activePage={activePage} setActivePage={setActivePage} />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/category/:category" element={<CategoryPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

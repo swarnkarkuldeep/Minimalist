@@ -1,6 +1,33 @@
 .about-container {
   width: 100%;
-  padding: 16px 0;
+  padding: 16px 40px;
+  padding-left: calc(195px + 40px); /* 195px for navbar, 40px for content padding */
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .about-container {
+    padding-left: 195px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: 0;
+    margin-top: 80px;
+  }
 }
 
 .about-title {

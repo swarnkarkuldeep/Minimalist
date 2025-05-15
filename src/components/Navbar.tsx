@@ -1,25 +1,29 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ activePage, setActivePage }: { activePage: string; setActivePage: (page: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'Home', path: '/' },
+    { id: 'about', label: 'About', path: '/about' },
+    { id: 'blog', label: 'Blog', path: '/blog' },
+    { id: 'contact', label: 'Contact', path: '/contact' },
   ];
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleMenuClick = (id: string) => {
+  const handleMenuClick = (id: string, path: string) => {
     setActivePage(id);
     setIsMenuOpen(false);
+    navigate(path);
   };
 
   return (
@@ -59,9 +63,8 @@ const Navbar = ({ activePage, setActivePage }: { activePage: string; setActivePa
                   transition={{ delay: 0.1 * index }}
                 >
                   <button
-                    className={`menu-item ${activePage === item.id ? 'active' : ''}`}
-                    onClick={() => handleMenuClick(item.id)}
-                    
+                    className={`menu-item${location.pathname === item.path ? ' active' : ''}`}
+                    onClick={() => handleMenuClick(item.id, item.path)}
                   >
                     {item.label}
                   </button>
