@@ -1,13 +1,33 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "minimalist-photography-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A clean, elegant photography portfolio website built with React and Vite",
+  "author": "swarnkarkuldeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swarnkarkuldeep/Minimalist.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "vite",
+    "portfolio",
+    "photography",
+    "minimalist"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write 'src/**/*.{ts,tsx,css}'",
+    "test": "echo \"No tests specified\" && exit 0",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.39",
@@ -29,7 +49,10 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",

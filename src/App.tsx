@@ -12,7 +12,7 @@ import './App.css';
 import CategoryPage from './components/CategoryPage';
 import BlogPost from './components/BlogPost';
 
-// Animated route wrapper
+// My custom animated routes implementation
 const AnimatedRoutes = () => {
   const location = useLocation();
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -55,10 +55,10 @@ const AnimatedRoutes = () => {
     };
   }, []);
 
-  // Scroll to top on route change
+  // My implementation for scrolling to top on route changes
   useEffect(() => {
     if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true }); // instant scroll to top
+      lenisRef.current.scrollTo(0, { immediate: true }); 
     } else {
       window.scrollTo(0, 0);
     }

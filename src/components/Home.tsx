@@ -4,8 +4,9 @@ import './Home.css';
 import MasonryGrid from './MasonryGrid';
 import { categories } from '../data/categories';
 
-const INITIAL_VISIBLE = 6; // Number of categories to show initially
-const LOAD_MORE_COUNT = 6; // Number of categories to load each time
+// My custom pagination settings
+const INITIAL_VISIBLE = 6;
+const LOAD_MORE_COUNT = 6;
 
 const Home: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);

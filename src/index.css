@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'CouragesDemo';
-  src: url('/public/fonts/CouragesDemo-rgjjK.otf') format('opentype');
+  src: url('/fonts/CouragesDemo-rgjjK.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'ExaltedExDemo';
-  src: url('/public/fonts/ExaltedExDemo-9MMeZ.otf') format('opentype');
+  src: url('/fonts/ExaltedExDemo-9MMeZ.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

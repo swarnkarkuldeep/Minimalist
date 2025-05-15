@@ -5,7 +5,7 @@ import { portfolioItems, PortfolioItem } from '../data/portfolioData';
 import { Category } from '../data/categories';
 import './MasonryGrid.css';
 
-// Helper to get unique categories
+// My custom function to extract unique categories from portfolio items
 function getUniqueCategoryItems(items: PortfolioItem[]): PortfolioItem[] {
   const seen = new Set<string>();
   return items.filter(item => {

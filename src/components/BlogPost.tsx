@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import './Blog.css';
+import './BlogPost.css';
 import { motion } from 'framer-motion';
 
-// Dummy data for demonstration; replace with your actual data source
 const blogPosts = [
   {
     id: 1,
@@ -116,135 +115,35 @@ const BlogPost: React.FC = () => {
 
   if (!post) {
     return (
-      <div className="blogpost-container">
-        <p style={{ color: 'var(--off-white)', textAlign: 'center' }}>Post not found.</p>
-        <Link to="/blog" className="back-button" style={{ display: 'block', margin: '2rem auto', textAlign: 'center', color: 'var(--text-light)', textDecoration: 'underline' }}>
-          ← Back to Blog
-        </Link>
+      <div className="blogpost-wrapper">
+        <p className="blogpost-not-found">Post not found.</p>
+        <Link to="/blog" className="back-button">← Back to Blog</Link>
       </div>
     );
   }
 
   return (
     <motion.div
-      className="blogpost-container"
+      className="blogpost-wrapper"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -40 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'row',
-        marginLeft: '195px', // keep for desktop, CSS will override on mobile
-        background: 'var(--black)'
-      }}
     >
-      <div
-        className="blogpost-fixed-image"
-        style={{
-          width: 420,
-          minWidth: 320,
-          maxWidth: 600,
-          height: '100vh',
-          position: 'sticky',
-          top: 0,
-          left: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'rgba(20,20,20,0.95)', // Match text background
-          zIndex: 2,
-          boxShadow: '2px 0 16px rgba(0,0,0,0.12)',
-          padding: '32px' // Add padding to the image
-        }}
-      >
-        <img
-          src={post.imageUrl}
-          alt={post.title}
-          style={{
-            width: '100%',
-            height: 'auto',
-            maxHeight: '90vh',
-            objectFit: 'cover',
-            filter: 'grayscale(100%)'
-          }}
-        />
-      </div>
-      <div
-        className="blogpost-scroll-content"
-        style={{
-          flex: 1,
-          maxHeight: '100vh',
-          overflowY: 'auto',
-          padding: '64px 48px',
-          background: 'rgba(20,20,20,0.95)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start'
-        }}
-      >
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginBottom: "24px" }}>
-          <Link to="/blog" className="blogpost-back-button" style={{
-            color: 'var(--text-light)',
-            background: 'none',
-            border: 'none',
-            fontSize: 18,
-            textDecoration: 'underline',
-            fontFamily: "'ExaltedExDemo', sans-serif",
-            letterSpacing: 1,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
-            <span className="back-arrow">←</span>
-            <span className="back-text">Back</span>
-          </Link>
+      <div className="blogpost-content">
+        <div className="blogpost-header">
+          <img src={post.imageUrl} alt={post.title} className="blogpost-image" />
+          <div className="blogpost-text">
+            <h1 className="blogpost-title">{post.title}</h1>
+            <p className="blogpost-meta">{post.date} • {post.category}</p>
+          </div>
         </div>
-        <h1 className="blogpost-title" style={{
-          fontFamily: "'CouragesDemo', sans-serif",
-          fontSize: 32,
-          color: 'var(--off-white)',
-          marginBottom: 18,
-          textAlign: 'left',
-          fontWeight: 700,
-          letterSpacing: 1
-        }}>
-          {post.title}
-        </h1>
-        <div className="blogpost-meta" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 24,
-          color: 'var(--text-light)',
-          fontSize: 15,
-          marginBottom: 32,
-          fontFamily: "'ExaltedExDemo', sans-serif"
-        }}>
-          <span>{post.date}</span>
-          <span style={{
-            background: 'rgba(255,255,255,0.06)',
-            borderRadius: 6,
-            padding: '2px 12px',
-            fontSize: 13,
-            letterSpacing: 1,
-            textTransform: 'uppercase'
-          }}>
-            {post.category}
-          </span>
+        <div className="blogpost-body">
+          {post.content.split('\n\n').map((para, index) => (
+            <p key={index}>{para}</p>
+          ))}
         </div>
-        <div className="blogpost-excerpt" style={{
-          color: 'var(--text-light)',
-          fontSize: 18,
-          lineHeight: 1.7,
-          textAlign: 'left',
-          fontFamily: "'ExaltedExDemo', sans-serif",
-          marginBottom: 32,
-          maxWidth: 700,
-          whiteSpace: 'pre-line'
-        }}>
-          {post.content || post.excerpt}
-        </div>
+        <Link to="/blog" className="back-button">← Back to Blog</Link>
       </div>
     </motion.div>
   );

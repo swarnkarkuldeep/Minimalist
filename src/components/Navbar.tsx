@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = ({ activePage, setActivePage }: { activePage: string; setActivePage: (page: string) => void }) => {
+const Navbar = ({ setActivePage }: { activePage: string; setActivePage: (page: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
