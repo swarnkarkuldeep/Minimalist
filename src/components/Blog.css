@@ -145,6 +145,11 @@
   color: var(--off-white);
   line-height: 1.3;
 }
+.back-button:hover {
+  opacity: 0.8;
+  transform: translateX(-4px);
+  transition: all 0.3s ease;
+}
 
 .modal-date {
   font-size: 14px;
@@ -295,6 +300,56 @@
   width: 100%;
   max-width: 800px;
   margin-bottom: 40px;
+}
+
+/* Mobile-first layout improvements */
+@media (max-width: 768px) {
+  .blogpost-container {
+    flex-direction: column !important;
+    margin-left: 0 !important;
+  }
+
+  .blogpost-fixed-image {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 16px !important;
+    box-shadow: none !important;
+  }
+
+  .blogpost-fixed-image img {
+    max-height: none !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .blogpost-scroll-content {
+    padding: 24px 16px !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  .back-button {
+    font-size: 1rem;
+    margin-top: 16px;
+  }
+  
+  .blog-container {
+    padding: 40px 20px;
+    margin-left: 0;
+  }
+  
+  .blog-title {
+    font-size: 42px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+  
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 
 .blog-post-back {
@@ -486,4 +541,92 @@
 
 .blog-post-container .post-image-container {
   margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 60px 20px;
+    margin-left: 0;
+  }
+
+  .blog-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+  }
+
+  .blog-grid {
+    gap: 24px;
+  }
+
+  .blog-post-card {
+    border-radius: 6px;
+  }
+
+  .post-image-container {
+    height: 200px;
+  }
+
+  .post-title {
+    font-size: 18px;
+  }
+
+  .post-excerpt {
+    font-size: 13px;
+  }
+
+  .post-content {
+    padding: 16px;
+  }
+
+  .modal-image {
+    height: 250px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-text {
+    padding: 20px;
+  }
+
+  .modal-excerpt {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-title {
+    font-size: 28px;
+  }
+
+  .post-title {
+    font-size: 16px;
+  }
+
+  .post-excerpt {
+    font-size: 12px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .modal-excerpt {
+    font-size: 15px;
+  }
+
+  .blog-post-content {
+    font-size: 15px;
+  }
+
+  .blog-post-title {
+    font-size: 32px;
+  }
+
+  .blog-post-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
 }

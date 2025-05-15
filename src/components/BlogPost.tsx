@@ -136,7 +136,7 @@ const BlogPost: React.FC = () => {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'row',
-        marginLeft: 195,
+        marginLeft: '195px', // keep for desktop, CSS will override on mobile
         background: 'var(--black)'
       }}
     >
@@ -156,7 +156,7 @@ const BlogPost: React.FC = () => {
           background: 'rgba(20,20,20,0.95)', // Match text background
           zIndex: 2,
           boxShadow: '2px 0 16px rgba(0,0,0,0.12)',
-          padding: '32px' // Add left margin to the image
+          padding: '32px' // Add padding to the image
         }}
       >
         <img
